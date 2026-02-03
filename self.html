@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 320px;
+}
+h1 {
+    color: #e91e63;
+}
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+#yesBtn {
+    background-color: #e91e63;
+    color: white;
+}
+#noBtn {
+    background-color: #ccc;
+    color: #333;
+    position: absolute;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+    <p>After all the fights, misunderstandings, and hard days… I still choose you.</p>
+    <button id="yesBtn">Yes 💘</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+// Make NO button escape on hover, click, and touch
+["mouseover", "click", "touchstart"].forEach(event => {
+    noBtn.addEventListener(event, () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    });
+});
+
+// YES button with secret answer
+yesBtn.addEventListener("click", () => {
+    const answer = prompt(
+        "One question before you say yes 😉\nWhat is the answer?"
+    );
+    if (answer === "111111") {
+        document.body.innerHTML = `
+        <div style="color:white;text-align:center;">
+            <h1>YAY!!! 💖💖💖</h1>
+            <h2>You just made me the happiest person alive 😘</h2>
+        </div>`;
+    } else {
+        alert("Hmm… that’s not right 😏 Only one person knows the answer.");
+    }
+});
+</script>
+
+</body>
+</html>
